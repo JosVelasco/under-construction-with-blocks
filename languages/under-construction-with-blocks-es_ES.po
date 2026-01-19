@@ -1,0 +1,73 @@
+# Translation file for Under Construction with Blocks
+# Copyright (C) 2025 Jos Velasco
+# This file is distributed under the same license as the Under Construction with Blocks plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Under Construction with Blocks 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/JosVelasco/under-construction-with-blocks/issues\n"
+"POT-Creation-Date: 2025-01-19 12:00+0000\n"
+"PO-Revision-Date: 2026-01-19 14:00-0600\n"
+"Last-Translator: Jos Velasco <jos@josvelasco.com>\n"
+"Language-Team: Spanish\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#: under-construction-with-blocks.php
+msgid "Edit Page"
+msgstr "Editar página"
+
+#: includes/class-page-creator.php
+msgid "Under Construction"
+msgstr "En construcción"
+
+#: includes/class-page-creator.php
+msgid "🚧 Under Construction"
+msgstr "🚧 En construcción"
+
+#: includes/class-page-creator.php
+msgid "We're working hard to bring you something amazing. Check back soon!"
+msgstr "¡Estamos trabajando duro para traerte algo increíble. Vuelve pronto!"
+
+#: includes/class-page-creator.php
+msgid "In the meantime, feel free to reach out to us if you have any questions."
+msgstr "Mientras tanto, no dudes en contactarnos si tienes alguna pregunta."
+
+#: includes/class-admin-notice.php
+msgid "🚧 Under Construction Mode is Active."
+msgstr "🚧 El modo en construcción está activo."
+
+#: includes/class-admin-notice.php
+msgid "Visitors see the maintenance page. Only logged-in users can access the site."
+msgstr "Los visitantes ven la página de mantenimiento. Solo los usuarios conectados pueden acceder al sitio."
+
+#: includes/class-admin-notice.php
+msgid "Maintenance Options"
+msgstr "Opciones de mantenimiento"
+
+#: includes/class-admin-notice.php
+msgid "Edit Under Construction Page"
+msgstr "Editar página en construcción"
+
+#: includes/class-admin-notice.php
+msgid "Deactivate Maintenance Mode"
+msgstr "Desactivar modo de mantenimiento"
+
+#: includes/class-admin-notice.php
+msgid "Are you sure you want to deactivate maintenance mode? Visitors will be able to access your site."
+msgstr "¿Estás seguro de que quieres desactivar el modo de mantenimiento? Los visitantes podrán acceder a tu sitio."
+
+#: includes/class-admin-notice.php
+msgid "Error deactivating maintenance mode. Please try again."
+msgstr "Error al desactivar el modo de mantenimiento. Por favor, inténtalo de nuevo."
+
+#: includes/class-admin-notice.php
+msgid "You do not have permission to perform this action."
+msgstr "No tienes permiso para realizar esta acción."
+
+#: includes/class-admin-notice.php
+msgid "Maintenance mode deactivated."
+msgstr "Modo de mantenimiento desactivado."
