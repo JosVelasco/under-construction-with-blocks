@@ -16,7 +16,7 @@ A simple maintenance mode plugin that shows a friendly "under construction" page
 
 **What it does:**
 
-* Creates a professional maintenance page automatically when activated
+* Creates a simple maintenance page automatically when activated
 * Shows this page to all website visitors
 * Lets you and other logged-in users access the site normally to keep working
 * Uses your theme's styling so it looks consistent with your brand
