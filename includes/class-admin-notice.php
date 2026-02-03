@@ -85,11 +85,12 @@ class ARTP_Admin_Notice {
 			return;
 		}
 
-		// Inline CSS for the dropdown.
+		// Register and enqueue the inline style.
+		wp_register_style( 'artp-admin-style', false );
+		wp_enqueue_style( 'artp-admin-style' );
 		wp_add_inline_style(
-			'common',
-			'
-			.artp-dropdown-menu {
+			'artp-admin-style',
+			'.artp-dropdown-menu {
 				position: absolute;
 				background: #fff;
 				border: 1px solid #c3c4c7;
@@ -119,58 +120,66 @@ class ARTP_Admin_Notice {
 			}
 			.artp-dropdown-toggle {
 				position: relative;
-			}
-			'
+			}'
 		);
 
-		// Inline JavaScript for dropdown functionality.
+		// Prepare localized script data.
+		$script_data = array(
+			'nonce'              => wp_create_nonce( 'artp_deactivate_temporary_page' ),
+			'confirmMessage'     => __( 'Are you sure you want to deactivate the temporary page? Visitors will be able to access your site.', 'almost-ready-temporary-page' ),
+			'errorMessage'       => __( 'Error deactivating temporary page. Please try again.', 'almost-ready-temporary-page' ),
+		);
+
+		// Register and enqueue the inline script.
+		wp_register_script( 'artp-admin-script', false, array( 'jquery' ), ARTP_VERSION, true );
+		wp_enqueue_script( 'artp-admin-script' );
 		wp_add_inline_script(
-			'common',
-			"
-			jQuery(document).ready(function($) {
+			'artp-admin-script',
+			'jQuery(document).ready(function($) {
+				var artpData = ' . wp_json_encode( $script_data ) . ';
+
 				// Toggle dropdown
-				$('.artp-dropdown-toggle').on('click', function(e) {
+				$(".artp-dropdown-toggle").on("click", function(e) {
 					e.preventDefault();
 					e.stopPropagation();
-					$('.artp-dropdown-menu').slideToggle(200);
+					$(".artp-dropdown-menu").slideToggle(200);
 				});
 
 				// Close dropdown when clicking outside
-				$(document).on('click', function(e) {
-					if (!$(e.target).closest('.artp-dropdown-toggle, .artp-dropdown-menu').length) {
-						$('.artp-dropdown-menu').slideUp(200);
+				$(document).on("click", function(e) {
+					if (!$(e.target).closest(".artp-dropdown-toggle, .artp-dropdown-menu").length) {
+						$(".artp-dropdown-menu").slideUp(200);
 					}
 				});
 
 				// Handle deactivate link
-				$('.artp-deactivate-link').on('click', function(e) {
+				$(".artp-deactivate-link").on("click", function(e) {
 					e.preventDefault();
 					
-					if (!confirm('" . esc_js( __( 'Are you sure you want to deactivate the temporary page? Visitors will be able to access your site.', 'almost-ready-temporary-page' ) ) . "')) {
+					if (!confirm(artpData.confirmMessage)) {
 						return;
 					}
 
 					$.ajax({
 						url: ajaxurl,
-						type: 'POST',
+						type: "POST",
 						data: {
-							action: 'artp_deactivate_temporary_page',
-							nonce: '" . wp_create_nonce( 'artp_deactivate_temporary_page' ) . "'
+							action: "artp_deactivate_temporary_page",
+							nonce: artpData.nonce
 						},
 						success: function(response) {
 							if (response.success) {
 								location.reload();
 							} else {
-								alert('" . esc_js( __( 'Error deactivating temporary page. Please try again.', 'almost-ready-temporary-page' ) ) . "');
+								alert(artpData.errorMessage);
 							}
 						},
 						error: function() {
-							alert('" . esc_js( __( 'Error deactivating temporary page. Please try again.', 'almost-ready-temporary-page' ) ) . "');
+							alert(artpData.errorMessage);
 						}
 					});
 				});
-			});
-			"
+			});'
 		);
 	}
 
